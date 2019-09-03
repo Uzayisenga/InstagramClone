@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<h1> All Profiles</h1>
+
+    <% @profiles.each do |profile| %>
+      <% if user_signed_in? %>
+      <% if current_user.id==profile.user_id %>
+      <p><%= image_tag profile.image.url, class:"image" %></p>
+        <p><%= profile.user.email %></p>
+        <%= link_to 'Show', profile %>
+        <%= link_to 'Edit', edit_profile_path(profile) %>
+       <%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+    <% end %>
+    <% end %>
+
+<br>
+
+
