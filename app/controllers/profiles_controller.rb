@@ -28,7 +28,6 @@ class ProfilesController < ApplicationController
 
     respond_to do |format|
       if @profile.save
-        ContactMailer.contact_mail(@profile).deliver
         format.html { redirect_to posts_path, notice: 'Profile was successfully created.' }
         format.json { render :show, status: :created, location: @profile }
       else
